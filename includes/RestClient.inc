@@ -130,6 +130,8 @@ class RestClient {
       $request->headers[] = 'Content-length: '. strlen($data);
     }
 
+    $request->headers[] = "Expect:";
+
     curl_setopt_array($ch, $request->curlOpts + $this->curlOpts);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $request->headers);
     return $ch;
